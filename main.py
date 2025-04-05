@@ -15,9 +15,12 @@ from threading import Thread
 # URL TESTE
 #url = "http://127.0.0.1/4/login.php"
 #url = "http://44.203.221.183/admin/index.php"
-#url = "http://44.203.221.183/admin/index.php"
+#url = "http://3.219.33.194/admin/index.php"
+
 #url = "http://testphp.vulnweb.com/userinfo.php"
-url = "http://advanced.bancocn.com/admin/index.php"
+url = "http://www.bancocn.com/admin/index.php"
+#url = "http://advanced.bancocn.com/admin/index.php"
+
 
 
 # Variaveis globais

